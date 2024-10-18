@@ -5,13 +5,10 @@ const connectDB = require("./config/db");
 const User = require("./models/User");
 const Metric = require("./models/Metric");
 
-// Load environment variables
 dotenv.config();
 
-// Connect to MongoDB
 connectDB();
 
-// Admin user data (5 admins)
 const users = [
   {
     email: "admin1@example.com",
@@ -35,7 +32,6 @@ const users = [
   },
 ];
 
-// Sustainability metrics for each admin (dummy data for 5 years)
 const metrics = [
   {
     carbonEmissions: [50, 48, 46, 44, 42],
@@ -64,17 +60,13 @@ const metrics = [
   },
 ];
 
-// Seeder function
 const seedData = async () => {
   try {
-    // Clear existing data
     await User.deleteMany();
     await Metric.deleteMany();
 
-    // Insert users into database
     const createdUsers = await User.insertMany(users);
 
-    // Insert metrics for each user
     for (let i = 0; i < createdUsers.length; i++) {
       const newMetric = new Metric({
         user: createdUsers[i]._id,
@@ -93,5 +85,4 @@ const seedData = async () => {
   }
 };
 
-// Run the seeder function
 seedData();

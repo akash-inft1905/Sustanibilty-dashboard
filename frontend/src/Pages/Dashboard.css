@@ -1,4 +1,3 @@
-/* Base Styles for Dashboard */
 body {
   font-family: "Arial", sans-serif;
   background-color: #f4f7f9;
@@ -17,17 +16,15 @@ body {
   position: relative;
 }
 
-/* Typography */
 h1 {
   text-align: center;
-  color: #1d4ed8; /* Vibrant blue */
+  color: #1d4ed8;
   font-size: 3rem;
   margin-bottom: 20px;
 }
 
-/* Button Styles */
 .logout-button {
-  background-color: #ef4444; /* Bright Red */
+  background-color: #ef4444;
   color: #fff;
   padding: 12px 20px;
   border: none;
@@ -38,11 +35,11 @@ h1 {
 }
 
 .logout-button:hover {
-  background-color: #dc2626; /* Darker red on hover */
+  background-color: #dc2626;
 }
 
 .download-button {
-  background-color: #f59e0b; /* Vibrant orange */
+  background-color: #f59e0b;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -53,10 +50,9 @@ h1 {
 }
 
 .download-button:hover {
-  background-color: #d97706; /* Darker orange on hover */
+  background-color: #d97706;
 }
 
-/* Form Styles */
 form {
   display: flex;
   flex-direction: column;
@@ -71,27 +67,25 @@ form {
 label {
   font-size: 1rem;
   margin-bottom: 8px;
-  color: #475569; /* Cool dark gray */
+  color: #475569;
 }
 
 input[type="number"] {
   padding: 10px;
   border-radius: 8px;
-  border: 2px solid #93c5fd; /* Soft blue */
+  border: 2px solid #93c5fd;
   outline: none;
   transition: border-color 0.3s ease;
 }
 
 input[type="number"]:focus {
-  border-color: #2563eb; /* Deep blue on focus */
+  border-color: #2563eb;
 }
 
-/* Chart Container */
 .chart-container {
   margin-top: 70px;
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
   .dashboard-container {
     padding: 15px;
@@ -111,7 +105,7 @@ input[type="number"]:focus {
 @media (max-width: 480px) {
   .dashboard-container {
     padding: 10px;
-    box-shadow: none; /* Remove shadow on smaller screens */
+    box-shadow: none;
   }
 
   h1 {

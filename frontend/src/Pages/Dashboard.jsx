@@ -10,9 +10,8 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import "./Dashboard.css"; // Optional: Custom styles
+import "./Dashboard.css";
 
-// Registering necessary components for Chart.js
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -54,7 +53,7 @@ const Dashboard = () => {
         borderWidth: 2,
         fill: false,
       },
-      // Industry benchmarks (dummy data)
+
       {
         label: "Industry Carbon Emissions Benchmark",
         data: [10, 9, 8, 7, 6],
@@ -92,7 +91,7 @@ const Dashboard = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const yearLabels = Array.from({ length: 5 }, (_, i) => 2023 - i); // Last 5 years
+    const yearLabels = Array.from({ length: 5 }, (_, i) => 2023 - i);
 
     const carbonData = [...chartData.datasets[0].data, metrics.carbonEmissions];
     const waterData = [...chartData.datasets[1].data, metrics.waterUsage];
@@ -104,14 +103,12 @@ const Dashboard = () => {
         { ...prev.datasets[0], data: carbonData },
         { ...prev.datasets[1], data: waterData },
         { ...prev.datasets[2], data: wasteData },
-        // Industry benchmark datasets remain unchanged
         { ...prev.datasets[3] },
         { ...prev.datasets[4] },
         { ...prev.datasets[5] },
       ],
     }));
 
-    // Reset input fields
     setMetrics({ carbonEmissions: "", waterUsage: "", wasteGenerated: "" });
   };
 
@@ -145,7 +142,7 @@ const Dashboard = () => {
 
   const handleLogout = () => {
     localStorage.clear("orenToken");
-    window.location.reload(); // You can also redirect to login page
+    window.location.reload();
   };
 
   return (

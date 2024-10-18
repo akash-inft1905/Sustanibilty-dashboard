@@ -25,11 +25,9 @@ app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/metrics", require("./routes/metricsRoutes"));
 
 if (process.env.NODE_ENV === "production") {
-  // Serve static assets from the frontend build directory
-  const frontendBuildPath = path.join(__dirname, "../frontend/dist"); // Adjust this path if necessary
+  const frontendBuildPath = path.join(__dirname, "../frontend/dist");
   app.use(express.static(frontendBuildPath));
 
-  // Handle all other routes by serving the index.html file
   app.get("*", (req, res) => {
     res.sendFile(path.join(frontendBuildPath, "index.html"));
   });
@@ -39,6 +37,5 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-// Starting server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

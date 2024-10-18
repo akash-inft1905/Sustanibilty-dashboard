@@ -7,15 +7,15 @@ const metricSchema = new mongoose.Schema({
     required: true,
   },
   carbonEmissions: {
-    type: [Number], // Array of numbers (last 5 years data)
+    type: [Number],
     required: true,
   },
   waterUsage: {
-    type: [Number], // Array of numbers (last 5 years data)
+    type: [Number],
     required: true,
   },
   wasteGenerated: {
-    type: [Number], // Array of numbers (last 5 years data)
+    type: [Number],
     required: true,
   },
 });

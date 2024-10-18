@@ -5,12 +5,10 @@ exports.addMetrics = async (req, res) => {
   let metrics = await Metric.findOne({ user: req.user.id });
 
   if (metrics) {
-    // Update existing metrics
     metrics.carbonEmissions = carbonEmissions;
     metrics.waterUsage = waterUsage;
     metrics.wasteGenerated = wasteGenerated;
   } else {
-    // Create new metrics record
     metrics = new Metric({
       user: req.user.id,
       carbonEmissions,
@@ -23,7 +21,6 @@ exports.addMetrics = async (req, res) => {
   res.json({ message: "Metrics updated successfully", metrics });
 };
 
-// Get metrics for the logged-in user
 exports.getMetrics = async (req, res) => {
   const metrics = await Metric.findOne({ user: req.user.id });
   if (!metrics) {
