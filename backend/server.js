@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const cors = require("cors");
+const path = require("path");
 dotenv.config();
 
 connectDB();
@@ -21,11 +22,11 @@ app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/metrics", require("./routes/metricsRoutes"));
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/frontend/build")));
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
   //any app route that is not api will redirected to index.html
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
   });
 } else {
   app.get("/", (req, res) => {
