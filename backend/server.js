@@ -22,11 +22,13 @@ app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/metrics", require("./routes/metricsRoutes"));
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/frontend/dist")));
+  // Serve static assets from the frontend build directory
+  const frontendBuildPath = path.join(__dirname, "../frontend/dist"); // Adjust this path if necessary
+  app.use(express.static(frontendBuildPath));
 
-  //any app route that is not api will redirected to index.html
+  // Handle all other routes by serving the index.html file
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+    res.sendFile(path.join(frontendBuildPath, "index.html"));
   });
 } else {
   app.get("/", (req, res) => {
